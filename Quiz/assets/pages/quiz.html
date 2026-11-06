@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizzCompi | Play Quiz</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/quiz.css">
+</head>
+
+<body class="quiz-page">
+
+    <header class="quiz-header position-sticky top-0">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+
+                <a class="navbar-brand fw-bold fs-3" href="../../index.html">
+                    <span class="brand-icon">
+                        <i class="ri-brain-line"></i>
+                    </span>
+                    Quizz<span class="brand-highlight">Compi</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+
+                    <i class="ri-menu-3-line"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="../../index.html">
+                                <i class="ri-home-5-line me-1"></i> Home
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html#quiz-list">
+                                Explore Quizzes
+                            </a>
+                        </li>
+                    </ul>
+
+                    <a href="../../index.html" class="btn nav-home-btn ms-lg-4 mt-3 mt-lg-0">
+                        <i class="ri-arrow-left-line me-1"></i> Back to Home
+                    </a>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="quiz-details-section py-5" id="quiz-detail">
+
+            <div class="container">
+
+                <div class="quiz-detail-card">
+
+                    <div class="row align-items-center g-4">
+
+                        <div class="col-12 col-lg-5">
+
+                            <div class="quiz-detail-image-wrap">
+                                <img src="" id="quiz-image"
+                                    class="quiz-image" alt="Quiz category image">
+
+                                <span class="image-label">
+                                    <i class="ri-sparkling-2-line"></i>
+                                    Featured Quiz
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-12 col-lg-7">
+
+                            <div class="quiz-detail-content">
+
+                                <span class="quiz-badge" id="quiz-category">
+                                    Tech Quiz
+                                </span>
+
+                                <h1 class="quiz-title mt-3" id="quiz-title">
+                                    Quiz Title
+                                </h1>
+
+                                <p class="quiz-discription quiz-muted" id="quiz-discription">
+                                    Get ready to test your knowledge and improve your technical skills.
+                                </p>
+
+                                <div class="row g-3 quiz-detail-stats">
+
+                                    <div class="col-6">
+                                        <div class="quiz-info">
+                                            <div class="info-icon">
+                                                <i class="ri-question-line"></i>
+                                            </div>
+                                            <div>
+                                                <small>Total Questions</small>
+                                                <span id="total-question">Questions</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="quiz-info">
+                                            <div class="info-icon">
+                                                <i class="ri-time-line"></i>
+                                            </div>
+                                            <div>
+                                                <small>Duration</small>
+                                                <span id="quiz-duration">Seconds</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="quiz-instruction mt-4">
+                                    <i class="ri-information-line"></i>
+                                    <p>
+                                        Read each question carefully, select your answer
+                                        and complete the quiz before the timer ends.
+                                    </p>
+                                </div>
+
+                                <button id="start-quiz" class="btn start-quiz-btn mt-4">
+                                    Start Quiz
+                                    <i class="ri-arrow-right-line ms-2"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="quiz-question" class="quiz-question-section py-5 d-none">
+
+            <div class="container">
+
+                <div class="quiz-question-card">
+
+                    <div class="question-header">
+
+                        <div>
+                            <span class="section-eyebrow">
+                                <i class="ri-lightbulb-flash-line"></i>
+                                QUIZ IN PROGRESS
+                            </span>
+
+                            <h2 id="questionQuizTitle" class="question-quiz-title mt-2">
+                                Quiz Title
+                            </h2>
+                        </div>
+
+                        <div class="timer-badge">
+                            <i class="ri-timer-line"></i>
+                            <span id="timer">00:00</span>
+                        </div>
+
+                    </div>
+
+                    <div class="question-progress-area mt-4">
+
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="progress-label">Your Progress</span>
+
+                            <span id="questionCount" class="question-count">
+                                Question 0 of 0
+                            </span>
+                        </div>
+
+                        <div class="progress" role="progressbar" aria-label="Quiz progress">
+                            <div id="progressBar" class="progress-bar bg-warning"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="question-body mt-5">
+
+                        <span class="question-label">
+                            QUESTION
+                        </span>
+
+                        <h3 id="questionText" class="question-text mt-3">
+                            Question will appear here.
+                        </h3>
+
+                        <div id="optionsContainer" class="options-container mt-4">
+                        </div>
+
+                    </div>
+
+                    <div class="question-navigation mt-5">
+
+                        <button id="backBtn" class="btn question-back-btn">
+                            <i class="ri-arrow-left-line me-2"></i>
+                            Back
+                        </button>
+
+                        <div class="d-flex flex-wrap gap-2">
+
+                            <!-- <button id="skipBtn" class="btn question-skip-btn">
+                                Skip
+                                <i class="ri-skip-forward-line ms-1"></i>
+                            </button> -->
+
+                            <button id="nextBtn" class="btn question-next-btn">
+                                Next
+                                <i class="ri-arrow-right-line ms-2"></i>
+                            </button>
+
+                            <button id="submitQuiz" class="btn question-submit-btn d-none">
+                                Submit Quiz
+                                <i class="ri-check-line ms-2"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="quiz-result" class="quiz-result-section py-5 d-none">
+
+            <div class="container">
+
+                <div class="quiz-result-card">
+
+                    <div class="result-heading text-center">
+
+                        <div class="result-icon-wrap">
+                            <i class="ri-trophy-line result-trophy"></i>
+                        </div>
+
+                        <span class="section-eyebrow mt-3">
+                            QUIZ FINISHED
+                        </span>
+
+                        <h2 class="result-title mt-2">
+                            Quiz Completed!
+                        </h2>
+
+                        <p class="quiz-muted">
+                            Here is your performance. Keep learning and keep improving!
+                        </p>
+
+                    </div>
+
+                    <div class="result-score-area text-center my-4">
+
+                        <div class="score-circle">
+                            <span id="finalScore">0/0</span>
+                            <small>Score</small>
+                        </div>
+
+                        <h3 id="scorePercentage" class="score-percentage mt-3">
+                            0%
+                        </h3>
+
+                        <p class="quiz-muted mb-0">
+                            Your Overall Score
+                        </p>
+
+                    </div>
+
+                    <div class="row g-3 result-statistics">
+
+                        <div class="col-6">
+                            <div class="result-stat correct-stat">
+                                <div class="stat-icon">
+                                    <i class="ri-check-line"></i>
+                                </div>
+
+                                <h3 id="correctCount">0</h3>
+                                <p>Correct</p>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="result-stat wrong-stat">
+                                <div class="stat-icon">
+                                    <i class="ri-close-line"></i>
+                                </div>
+
+                                <h3 id="wrongCount">0</h3>
+                                <p>Wrong</p>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-4">
+                            <div class="result-stat skipped-stat">
+                                <div class="stat-icon">
+                                    <i class="ri-skip-forward-line"></i>
+                                </div>
+
+                                <h3 id="skippedCount">0</h3>
+                                <p>Skipped</p>
+                            </div>
+                        </div> -->
+
+                    </div>
+
+                    <div class="answer-review-section mt-5">
+
+                        <div
+                            class="review-heading mb-4 d-flex flex-wrap justify-content-between align-items-center gap-3">
+
+                            <div>
+                                <span class="section-eyebrow">
+                                    <i class="ri-file-list-3-line"></i>
+                                    REVIEW
+                                </span>
+
+                                <h3 class="mt-2 mb-0">
+                                    Answer Review
+                                </h3>
+                            </div>
+
+                            <button type="button" id="toggleReviewBtn" class="btn question-next-btn">
+                                <i class="ri-eye-line me-2"></i>
+                                View Answer Review
+                            </button>
+
+                        </div>
+
+                        <div id="answerReviewContent" class="d-none">
+                            <div id="reviewAnswers" class="d-grid gap-3">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="result-actions d-flex flex-wrap justify-content-center gap-3 mt-5">
+
+                        <button id="restartQuiz" class="btn restart-quiz-btn">
+                            <i class="ri-refresh-line me-2"></i>
+                            Try Again
+                        </button>
+
+                        <a href="../../index.html" id="homePage" class="btn result-home-btn">
+                            <i class="ri-home-5-line me-2"></i>
+                            Back to Home
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="quiz-footer">
+        <div class="container">
+
+            <div class="footer-content">
+
+                <a href="./index.html" class="footer-brand">
+                    <i class="ri-brain-line"></i>
+                    Quizz<span>Compi</span>
+                </a>
+
+                <p class="mb-0">
+                    Learn something new. Challenge yourself. Grow every day.
+                </p>
+
+                <div class="footer-divider"></div>
+
+                <div class="footer-bottom">
+                    <span>
+                        &copy; 2026 QuizzCompi. All Rights Reserved.
+                    </span>
+
+                    <a href="./index.html">
+                        Explore Quizzes
+                        <i class="ri-arrow-right-up-line"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- DATA JS -->
+    <script src="../js/data.js"></script>
+
+    <!-- QUIZ JS -->
+    <script src="../js/quiz.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
